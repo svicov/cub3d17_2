@@ -1,0 +1,1 @@
+mn->map = (char **)malloc((mn->num_s - mn->num_s0) * mn->maxlen * sizeof(char));
