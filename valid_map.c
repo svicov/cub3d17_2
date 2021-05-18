@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int			valid_map(t_mn *mn)
+int			valid_map(t_mn *mn)  /*  1- invalid  0 - valid   */
 {
 	int		i;
 	int		j;
@@ -11,48 +11,80 @@ int			valid_map(t_mn *mn)
 		i = 0;
 		while (i < mn->maxlen)
 		{
+			printf("%c  %d   %d\n", mn->map[j][i], j, i);
 			if (mn->map[j][i] != '1')
-				if (player_sees_1_a(mn, i, j))
-				{						
-					ft_error(5);
-					return (1);
+			{
+				if (pl_s_above(mn, i, j) && pl_s_below(mn, i, j) &&	 pl_s_right(mn, i, j) && pl_s_leftward(mn, i, j))
+				 {
+					 
+				 }
+				else
+				{
+					printf("++%d %d    \n", j, i); return (1);
 				}
-
-
-				//if (player_sees_1_b(mn, i, j));
-				//	ft_error()					
+			}
+			printf("\n");
+			i++;
 		}
 		j++;
 	}
+	return (0);
 }
 
-int			player_sees_1_a(t_mn *mn, int i, int j)
+int pl_s_above(t_mn *mn, int i, int j)
+{
+	int		q;
+
+	q = 1;
+	while ((j - q) >= 0)
+	{
+		if ((mn->map[j - q][i]) == '1')
+		{
+			 printf("above\n");return (1); 
+		}
+			
+		q++;
+	}
+	return (0);
+}
+
+int		pl_s_below(t_mn *mn, int i, int j)
+{
+	int		q;
+
+	q = 1;
+	while ((j + q) < mn->num_s - mn->num_s0)
+	{
+		if ((mn->map[j + q][i]) == '1')
+			 printf("below\n");return (1);
+		q++;
+	}
+	return (0);
+}
+
+int		pl_s_right(t_mn *mn, int i, int j)
 {
 	int		q;
 
 	q = 1;
 	while ((i + q) < mn->maxlen)
-			if ((mn->map[j][i + q++]) = '1')
-			return (1);
-	q = 1;
-	while ((j + q) < mn->num_s - mn->num_s0)
 	{
-		if ((mn->map[j + q][i]) = '1')
-			return (1);
+		if ((mn->map[j][i + q]) == '1')
+			 printf("rigth\n");return (1);
 		q++;
 	}
+	return (0);
+}
+
+int pl_s_leftward(t_mn *mn, int i, int j)
+{
+	int	q;
+
 	q = 1;
 	while ((j - q) >= 0)
 	{
-		if ((mn->map[j - q][i]) = '1')
-			return (1);
-		q++;
-	}
-	q = 1;
-	while ((j - q) >= 0)
-	{
-		if ((mn->map[j + q][i]) = '1')
-			return (1);
+		if ((mn->map[j][i - q]) == '1')
+			 printf("leftward\n");return (1);
 		q++;
 	}
 	return (0);

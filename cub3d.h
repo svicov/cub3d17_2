@@ -73,7 +73,10 @@ void ft_maxlen(t_mn *mn, char **line);
 void rtue_mat2(t_mn *mn);
 int ft_error(int i);
 int			valid_map(t_mn *mn);
-int			player_sees_1_a(t_mn *mn, int i, int j);
+int pl_s_above(t_mn *mn, int i, int j);
+int		pl_s_below(t_mn *mn, int i, int j);
+int		pl_s_right(t_mn *mn, int i, int j);
+int pl_s_leftward(t_mn *mn, int i, int j);
 
 
 

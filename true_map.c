@@ -23,7 +23,9 @@ int true_map(t_mn *mn)
 		}
 		j++;
 	}
-	printf("34  кол строк %d    длинна стр %d   нулевых строк %d\n",mn->num_s, mn->maxlen, mn->num_s0);
+	printf("true_map-26  кол строк %d    длинна стр %d   нулевых строк %d\n",mn->num_s, mn->maxlen, mn->num_s0);
+	printf("mn->player = %d\n", mn->player);
+
 	return (0);
 }
 
@@ -80,16 +82,15 @@ void rtue_mat2(t_mn *mn)
 		j++;
 	}
 	j = 0;
-	printf("\n-=-=-=|%s|\n-=-=-=\n", mn->map[1]);
+	printf("\n\n\n");
 	while (j < mn->num_s - mn->num_s0)
 	{
-		i = 0;
-		
+		i = 0;		
 
 		while(i < mn->maxlen)
 		{
 			//printf()
-			printf("+%c",mn->map[j][i]);
+			printf("%c",mn->map[j][i]);
 			i++;
 		}
 		printf("\n");
@@ -98,10 +99,8 @@ void rtue_mat2(t_mn *mn)
 	}
 	printf("\n");
 
-	printf("101 101 10 110 1");
-
 	if (valid_map(mn))
-		printf("     nn NNNNNNinvaaa    map\n");
+		printf("  ****   invaaa    map  !!!!!!*****\n");
 	else
 		printf("map Ok\nOk  Ok   Ok    Ok    Ok  ");
 }
